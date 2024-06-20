@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email">email</string>
+    <string name="password">senha</string>
+    <string name="forgot">esqueceu sua senha ?</string>
+    <string name="login">entrar</string>
+    <string name="email_hint">Digite seu email</string>
+    <string name="password_hint">Digite sua senha</string>
+</resources>
