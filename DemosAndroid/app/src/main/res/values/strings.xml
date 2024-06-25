@@ -6,4 +6,5 @@
     <string name="login">login</string>
     <string name="email_hint">Mail</string>
     <string name="password_hint">Password</string>
+    <string name="fab_add_task">Adicionar</string>
 </resources>
