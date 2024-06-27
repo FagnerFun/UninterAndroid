@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ToDoListActivity">
-
+    tools:context=".todo.presentation.view.ToDoListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcToDo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/to_do_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAddTask"

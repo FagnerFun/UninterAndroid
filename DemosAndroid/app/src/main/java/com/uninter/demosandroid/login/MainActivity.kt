@@ -1,14 +1,15 @@
-package com.uninter.demosandroid
+package com.uninter.demosandroid.login
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
+import com.uninter.demosandroid.R
+import com.uninter.demosandroid.todo.presentation.view.ToDoListActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +33,10 @@ class MainActivity : AppCompatActivity() {
             Log.i("MainActivity","Usuario $mail e senha $password")
 
             if(mail == "fagner@fikra.com.br" && password == "senha123")
+            {
                 startActivity(Intent(this, ToDoListActivity::class.java))
+                finish()
+            }
             else
             {
 //                Toast.makeText(this,"Usuário ou senha invalido",Toast.LENGTH_LONG).show()
