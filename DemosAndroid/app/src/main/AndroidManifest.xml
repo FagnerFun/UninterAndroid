@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemosAndroid"
         tools:targetApi="31">
-        <activity android:name=".todo.presentation.view.ToDoListActivity" android:exported="true"/>
+        <activity android:name=".login.MainActivity" android:exported="true"/>
         <activity android:name=".login.ForgotActivity" android:exported="false" />
-        <activity android:name=".login.MainActivity" android:exported="true">
+        <activity android:name=".todo.presentation.view.ToDoListActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

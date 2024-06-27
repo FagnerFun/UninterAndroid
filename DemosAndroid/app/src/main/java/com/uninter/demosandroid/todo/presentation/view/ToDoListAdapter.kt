@@ -15,8 +15,6 @@ class ToDoListAdapter(val items: List<ToDo>): RecyclerView.Adapter<ToDoListAdapt
             with(itemView)
             {
                 item.let {
-
-//                    findViewById<CardView>(R.id.cardLayout).setBackgroundColor(Color.parseColor(it.hexColor))
                     findViewById<TextView>(R.id.txtToDoTitle).text = it.title
                     if(it.isCompleted)
                         findViewById<ImageView>(R.id.imgIsCompleted).setImageResource(android.R.drawable.checkbox_on_background)

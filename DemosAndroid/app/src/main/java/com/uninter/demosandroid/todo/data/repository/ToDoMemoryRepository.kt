@@ -1,26 +1,26 @@
 package com.uninter.demosandroid.todo.data.repository
 
+import com.uninter.demosandroid.todo.domain.abstractions.IToDoRepository
 import com.uninter.demosandroid.todo.domain.entity.ToDo
 
-object ToDoMemoryRepository {
+object ToDoMemoryRepository: IToDoRepository {
 
     private var list = listOf(
-        ToDo("Banana", false, "#FF0000"),
-        ToDo("Laranja", true, "#00FF00"),
-        ToDo("Pera", true, "#0000FF")
+        ToDo("Banana", false),
+        ToDo("Laranja", true),
+        ToDo("Pera", true)
     )
 
-    fun add(todo: ToDo)
+    override fun add(todo: ToDo): List<ToDo>
     {
         list = list.plus(todo)
-    }
-
-    fun getAll(): List<ToDo>
-    {
         return list
     }
 
-    fun delete(title: String)
+    override fun getAll(): List<ToDo> = list
+
+
+    override fun delete(title: String)
     {
         list = list.filter { it -> it.title != title }
     }
