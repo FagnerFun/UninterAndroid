@@ -1,5 +1,6 @@
 package com.uninter.demosandroid.todo.presentation.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -9,12 +10,14 @@ import com.uninter.demosandroid.R
 import com.uninter.demosandroid.databinding.ActivityToDoListBinding
 import com.uninter.demosandroid.todo.data.repository.ToDoMemoryRepository
 import com.uninter.demosandroid.todo.presentation.viewmodel.ToDoViewModel
+import com.uninter.demosandroid.todo.presentation.viewmodel.ToDoViewModelFactory
 
 class ToDoListActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityToDoListBinding
     val viewModel by lazy {
-        ViewModelProvider(this).get(ToDoViewModel::class.java)
+        var factory = ToDoViewModelFactory(application)
+        ViewModelProvider(this, factory)[ToDoViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,9 +32,13 @@ class ToDoListActivity : AppCompatActivity() {
             binding.rcToDo.adapter = ToDoListAdapter(it)
         }
 
-
         binding.btnAddTask.setOnClickListener{
-            viewModel.addToDo()
+            startActivity(Intent(this, ToDoDetailActivity::class.java))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadToDo()
     }
 }

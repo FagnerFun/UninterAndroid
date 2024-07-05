@@ -11,10 +11,9 @@ object ToDoMemoryRepository: IToDoRepository {
         ToDo("Pera", true)
     )
 
-    override fun add(todo: ToDo): List<ToDo>
+    override fun add(todo: ToDo)
     {
         list = list.plus(todo)
-        return list
     }
 
     override fun getAll(): List<ToDo> = list
@@ -23,5 +22,13 @@ object ToDoMemoryRepository: IToDoRepository {
     override fun delete(title: String)
     {
         list = list.filter { it -> it.title != title }
+    }
+
+    override fun completeToDo(toDo: ToDo) {
+        for(item in list)
+        {
+            if(item.title == toDo.title)
+                item.isCompleted = true
+        }
     }
 }

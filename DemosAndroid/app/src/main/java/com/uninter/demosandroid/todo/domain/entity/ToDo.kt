@@ -1,5 +1,11 @@
 package com.uninter.demosandroid.todo.domain.entity
 
-class ToDo(val title:String, val isCompleted:Boolean ) {
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.io.Serializable
 
+@Entity(tableName = "todo")
+data class ToDo(@PrimaryKey val title:String,
+           @ColumnInfo(name = "is_completed") var isCompleted:Boolean):Serializable {
 }

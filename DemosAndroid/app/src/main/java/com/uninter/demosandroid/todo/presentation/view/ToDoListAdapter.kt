@@ -1,10 +1,12 @@
 package com.uninter.demosandroid.todo.presentation.view
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.uninter.demosandroid.R
 import com.uninter.demosandroid.todo.domain.entity.ToDo
@@ -20,6 +22,12 @@ class ToDoListAdapter(val items: List<ToDo>): RecyclerView.Adapter<ToDoListAdapt
                         findViewById<ImageView>(R.id.imgIsCompleted).setImageResource(android.R.drawable.checkbox_on_background)
                     else
                         findViewById<ImageView>(R.id.imgIsCompleted).setImageResource(android.R.drawable.checkbox_off_background)
+
+                    findViewById<CardView>(R.id.cardLayout).setOnClickListener(){card ->
+                        var intent = Intent(card.context, ToDoDetailActivity::class.java)
+                        intent.putExtra("todo", it)
+                        card.context.startActivity(intent)
+                    }
                 }
             }
         }

@@ -1,25 +1,25 @@
 package com.uninter.demosandroid.todo.presentation.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.uninter.demosandroid.todo.domain.entity.ToDo
 import com.uninter.demosandroid.todo.domain.usecase.ToDoUseCase
 import com.uninter.demosandroid.todo.domain.usecase.interfaces.IToDoUseCase
 
-class ToDoViewModel(application: Application): ViewModel() {
+class ToDoDetailViewModel(application: Application): ViewModel() {
     private val useCase: IToDoUseCase = ToDoUseCase(application)
-    var todos = MutableLiveData<List<ToDo>>()
 
-    init {
-        Thread(Runnable {
-            loadToDo()
-        }).start()
-    }
-
-    fun loadToDo()
+    fun addToDo(title: String)
     {
-        todos.postValue(useCase.getAll())
+        var toDo = ToDo(title,false)
+        useCase.add(toDo)
     }
-
+    fun removeToDo(title: String)
+    {
+        useCase.delete(title)
+    }
+    fun completeToDo(toDo: ToDo)
+    {
+        useCase.completeToDo(toDo)
+    }
 }
